@@ -1,0 +1,48 @@
+/* info.css — sezioni "Tapahtumat" (eventi + feste private) e "Yhteystiedot".
+   Solo regole mobile. Versione desktop in desktop.css. */
+
+/* ---- eventi ---- */
+.evlist{list-style:none;margin:30px 0 0;padding:0;border-top:1px solid var(--rule)}
+.ev{padding:22px 0;border-bottom:1px solid var(--rule)}
+.evwhen{margin:0 0 6px;font-family:"Oswald",sans-serif;font-size:14px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--amber)}
+.evwhen b{font-weight:500;color:var(--ink);margin-left:8px}
+.ev h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:26px;letter-spacing:.04em;
+  text-transform:uppercase;margin:0 0 6px;line-height:1.1}
+.ev p:last-child{margin:0;color:var(--ink-soft);max-width:44ch}
+.private{margin-top:40px;padding:26px 22px;background:var(--paper);border:1px solid rgba(224,160,48,.32);
+  border-radius:var(--r-lg)}
+.private h3{font-family:"Oswald",sans-serif;font-weight:700;font-size:30px;text-transform:uppercase;
+  margin:0 0 8px;line-height:1}
+.private p{color:var(--ink-soft)}
+.private .eyebrow{color:var(--amber);margin-bottom:8px}
+.private .btn{margin-top:6px}
+
+/* ---- Find us ---- */
+.findgrid{display:grid;gap:44px;margin-top:30px}
+.find h3{font-family:"Oswald",sans-serif;font-weight:500;font-size:16px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-soft);margin:0 0 10px;padding-bottom:10px;
+  border-bottom:1px solid var(--rule)}
+.hours{width:100%;border-collapse:collapse;font-size:18px}
+.hours th{text-align:left;font-weight:400;color:var(--ink-soft);padding:9px 0}
+.hours td{text-align:right;font-weight:700;padding:9px 0}
+.hours tr+tr{border-top:1px solid var(--rule-soft,#201c17)}
+.hours tr[aria-current="date"] th,.hours tr[aria-current="date"] td{color:var(--amber)}
+.exc{margin-top:22px}
+.exc h4{margin:0 0 6px;font-family:"Oswald",sans-serif;font-weight:500;font-size:14px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint)}
+.exc ul{list-style:none;margin:0;padding:0}
+.exc li{display:flex;gap:10px;padding:5px 0;font-size:15.5px;color:var(--ink-soft)}
+.exc li b{margin-left:auto;color:var(--ink)}
+.addr{font-size:20px;margin:0 0 14px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 30px}
+.arrivo{margin:0 0 20px;padding-left:20px;color:var(--ink-soft)}
+.arrivo li{margin:6px 0}
+.soc{margin:0;color:var(--ink-faint)}
+.soc a{display:inline-block;min-height:44px;line-height:44px;padding:0 6px}
+
+/* ---- nota demo nel footer ---- */
+.demonote{flex:1 1 100%;margin:12px 0 0;padding-top:12px;border-top:1px dashed var(--rule);
+  font-size:13.5px;color:var(--ink-faint)}
+
+.demonote + .demonote{margin-top:4px;padding-top:0;border-top:0}

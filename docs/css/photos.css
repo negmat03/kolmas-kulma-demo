@@ -1,0 +1,45 @@
+/* photos.css — fasce a tutta larghezza e foto di sfondo.
+   Ogni sezione sta in una .band; dietro al testo c'e' uno spazio foto (.bgphoto).
+   Senza foto si vede un segnaposto sfumato; con la foto, la si rende sbiadita,
+   sfocata e quasi in bianco e nero, cosi' il testo resta leggibile.
+   Il movimento a scorrimento lo fa parallax.js (solo se l'utente non ha
+   chiesto di ridurre il movimento). */
+/* niente isolation:isolate: con quello il calendario (z-index 30) restava sotto la testata fissa (z-index 20).
+   La foto resta dietro al testo perche' .bgphoto ha z-index:-1 nel contesto della pagina. */
+.band{position:relative;overflow:clip}
+.bgphoto{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.bgphoto-in{position:absolute;inset:-9% 0;transform:translate3d(0,var(--py,0px),0);will-change:transform;
+  background:
+    radial-gradient(60% 46% at 18% 28%,rgba(224,160,48,.11),transparent 70%),
+    radial-gradient(46% 58% at 82% 72%,rgba(243,235,221,.06),transparent 70%)}
+.bgphoto[data-slot="taps"] .bgphoto-in,.bgphoto[data-slot="tavoli"] .bgphoto-in,.bgphoto[data-slot="arvostelut"] .bgphoto-in{
+  background:
+    radial-gradient(50% 50% at 80% 24%,rgba(224,160,48,.10),transparent 70%),
+    radial-gradient(60% 46% at 16% 76%,rgba(243,235,221,.05),transparent 70%)}
+:root{--photo-opacity:.55;--photo-blur:2px;--photo-bright:.8}   /* regolazione dell'aspetto delle foto in un solo posto */
+/* sul telefono le foto risultavano troppo scure: un po' piu' di luce */
+@media (max-width:899px){:root{--photo-opacity:.68;--photo-bright:.92}}
+.bgphoto img{width:100%;height:100%;object-fit:cover;
+  filter:grayscale(1) blur(var(--photo-blur)) brightness(var(--photo-bright)) contrast(.9);opacity:var(--photo-opacity)}
+/* sfuma in alto e in basso nel colore di fondo: le fasce si fondono */
+.bgphoto::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(var(--ground),transparent 16%,transparent 84%,var(--ground))}
+.ph-label{position:absolute;right:20px;top:calc(9% + 14px);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);opacity:.55;max-width:60%;text-align:right}
+
+/* ---- modalita' "sticky" (site.json > foto_modo): la foto resta alta quanto lo schermo e
+   ferma mentre il testo le scorre sopra. Evita lo zoom eccessivo sulle fasce alte dei telefoni,
+   dove "cover" sull'intera fascia mostrerebbe solo una fettina ingrandita. Con "drift" si
+   torna alla foto che copre tutta la fascia e si muove piano (parallax.js). ---- */
+body[data-photomode="sticky"] .bgphoto-in{position:sticky;inset:auto;top:0;
+  height:100vh;height:100svh;transform:none;will-change:auto;overflow:hidden}
+body[data-photomode="sticky"] .ph-label{top:84px}
+/* dentro il riquadro sticky la foto e' piu' alta del 18% e scorre lentamente (parallax.js imposta --py):
+   cosi' anche dove la fascia e' bassa quanto lo schermo (desktop) c'e' movimento */
+body[data-photomode="sticky"] .bgphoto img{position:absolute;top:-9%;left:0;width:100%;height:118%;
+  transform:translate3d(0,var(--py,0px),0);will-change:transform}
+
+/* leggibilita' del testo sopra le parti chiare delle foto: ombra morbida e scura dietro le lettere,
+   senza scurire la foto. Le due note tratteggiate hanno anche uno sfondo scuro semitrasparente. */
+.band h2,.band p,.band li,.band dt,.band dd{text-shadow:0 1px 12px rgba(10,8,6,.7)}
+.rev-note,.plan-disclaimer{background:rgba(15,13,11,.55)}

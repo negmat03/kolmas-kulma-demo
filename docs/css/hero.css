@@ -1,0 +1,30 @@
+/* hero.css — sezione 1: badge aperto/chiuso, titolo, bottoni, due risposte.
+   Solo regole mobile. La versione desktop sta in desktop.css, blocco "hero". */
+.hero{padding:36px 0 28px;position:relative}
+.status{display:inline-flex;align-items:center;gap:10px;margin:0 0 22px;padding:8px 14px;
+  border:1px solid var(--rule);border-radius:999px;font-size:14px;color:var(--ink-soft)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--ink-faint)}
+.status.open .dot{background:var(--open);box-shadow:0 0 0 0 rgba(111,207,142,.6);animation:pulse 2s infinite}
+.status.closed .dot{background:var(--closed)}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(111,207,142,0)}100%{box-shadow:0 0 0 0 rgba(111,207,142,0)}}
+@media (prefers-reduced-motion:reduce){.status.open .dot{animation:none}}
+.wordmark{font-family:"Oswald",Impact,sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(64px,22vw,150px);line-height:.88;letter-spacing:.01em;margin:0 0 20px}
+.wordmark em{font-style:normal;color:var(--amber)}
+/* titolo: ogni riga si ribalta in 3D entrando, una dopo l'altra. Solo transform e opacity. */
+.wordmark{perspective:800px}
+.wordmark .ln{display:inline-block;transform-origin:50% 100%;animation:rowin 1s var(--ease) both}
+.wordmark .ln + br + .ln{animation-delay:.2s}
+@keyframes rowin{from{opacity:0;transform:rotateX(-88deg)}to{opacity:1;transform:rotateX(0)}}
+@media (prefers-reduced-motion:reduce){.wordmark .ln{animation:none}}
+.tagline{font-size:19px;color:var(--ink-soft);max-width:34ch;margin:0 0 26px}
+
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:34px}
+
+.answers{display:grid;gap:14px}
+@media (min-width:640px){.answers{grid-template-columns:1fr 1fr}}
+.ans{background:var(--paper);border:1px solid rgba(224,160,48,.32);
+  padding:16px 18px;border-radius:var(--r-md)}
+.q{font-family:"Oswald",sans-serif;font-weight:500;font-size:15px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--amber);margin:0 0 6px}
+.a{margin:0;font-size:16.5px}

@@ -1,0 +1,93 @@
+/* desktop.css — adattamenti da 900 px in su.
+   Viene caricato con media="(min-width:900px)" in base.html, quindi qui
+   dentro NON serve un @media. Un blocco per sezione, nello stesso ordine
+   delle sezioni nella pagina. Deve restare l'ultimo CSS caricato. */
+
+/* ---- generale ---- */
+.wrap,.bar .in{max-width:1180px;padding-inline:40px}
+.wrap{padding-right:132px}
+.btn{min-height:52px;padding:0 28px;transition:transform .15s,background .15s}
+.btn.solid:hover{background:#F0B445;transform:translateY(-2px)}
+.btn.ghost:hover{border-color:var(--amber);color:var(--amber)}
+footer{font-size:15px}
+
+/* ---- hero (sezione 1): due colonne ---- */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+  column-gap:64px;align-items:center;align-content:center;min-height:calc(100vh - 160px);padding:48px 0;
+  position:relative}
+.hero::before{content:"";position:absolute;inset:-40px -40px auto auto;width:560px;height:560px;
+  background:radial-gradient(circle,rgba(224,160,48,.16),transparent 65%);pointer-events:none;z-index:-1}
+.hero > :not(.answers){grid-column:1}
+.hero > .status{justify-self:start}
+.wordmark{font-size:clamp(120px,12.5vw,190px)}
+.tagline{font-size:22px;max-width:30ch}
+.cta{margin-bottom:0}
+.answers{grid-column:2;grid-row:1 / span 4;grid-template-columns:1fr;gap:18px;align-self:center}
+.ans{padding:22px 24px}
+.q{font-size:16px}
+.a{font-size:18px}
+
+/* ---- sezione 2: birre e menu ---- */
+.sec{padding:112px 0 16px}
+.sec-title{font-size:clamp(56px,6.2vw,92px)}
+.taplist{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;margin-top:48px}
+.tap{grid-template-columns:88px 1fr auto;padding:28px 0;transition:background .2s}
+.tap:hover .glass{transform:translateY(-3px)}
+.glass.has-tap{height:272px}
+.glass{width:88px;height:165px;transition:transform var(--t-med) var(--ease)}
+.tap.guest .tag{left:104px}   /* bicchiere 88 + spazio 16 */
+.tapbody h3{font-size:28px}
+.note{font-size:17.5px}
+.price b{font-size:28px}
+.menugrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 56px;margin-top:48px}
+.dn{font-size:20px}
+
+/* ---- menu laterale: colonna fissa sul bordo destro ---- */
+.menu-btn,.nav-close{display:none}
+.backdrop{display:none}
+.sidenav{top:50%;bottom:auto;right:24px;left:auto;width:auto;padding:0;background:none;border:0;border-radius:0;
+  transform:translateY(-50%);visibility:visible;transition:none}
+.sidenav a{min-height:0;padding:7px 0 7px 18px;font-size:13px;letter-spacing:.18em;border:0;
+  justify-content:flex-end;opacity:.55;transition:opacity var(--t-fast),color var(--t-fast)}
+.sidenav li{opacity:1;transform:none;transition:none}
+.sidenav a:hover,.sidenav a[aria-current="true"]{opacity:1}
+.sidenav li.nav-ind{left:auto;right:-14px}
+.sidenav a[aria-current="true"]{color:var(--amber)}
+.scrollcue{position:absolute;left:0;bottom:8px;margin:0}
+
+/* ---- scheda "Lisätiedot", eventi, Find us, pianta: desktop ---- */
+.facts div{grid-template-columns:9em 1fr}
+.evlist{display:grid;grid-template-columns:1fr 1fr;column-gap:72px}
+.ev h3{font-size:32px}
+.private{padding:36px 40px;max-width:760px}
+.findgrid{grid-template-columns:1fr 1fr;gap:72px}
+.hours{font-size:20px}
+.planwrap{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;align-items:start}
+.plan-info{position:sticky;top:96px}
+.demonote{font-size:14px}
+
+/* ---- storia, recensioni, foto di sfondo: desktop ---- */
+.storygrid{grid-template-columns:1.3fr 1fr;gap:72px;align-items:start}
+.storytext p{font-size:21px}
+.facts3{grid-template-columns:1fr;gap:14px}
+.facts3 li{display:flex;align-items:baseline;gap:18px;padding:18px 22px}
+.facts3 b{font-size:42px;min-width:3ch}
+.facts3 span{margin:0}
+.revgrid{grid-template-columns:repeat(3,1fr);gap:22px}
+.ph-label{right:40px}
+
+/* ---- richiesta di tavolo ---- */
+.booking{padding:36px 40px;margin-top:40px}
+.bk-title{font-size:36px}
+.bk-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+.bk-grid.bk-two{grid-template-columns:1fr 1fr}
+.bk-field{margin-bottom:18px}
+.bk-cal{max-width:460px}
+
+/* ---- piatto con disegno (Kulma burger): colonna piu' stretta sul desktop, a tre colonne il nome non va a capo ---- */
+.dish.art{grid-template-columns:56px minmax(0,1fr);column-gap:12px}
+.dish.art > .dart,.dart svg{width:56px}
+
+/* calendario: pannello di 420 px sotto il campo data */
+.bk-datefield .bk-cal{width:420px;right:auto}
+/* menu a due colonne: a tre colonne il nome e il prezzo del piatto con disegno non stavano su una riga */

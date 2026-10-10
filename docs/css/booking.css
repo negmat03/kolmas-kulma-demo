@@ -1,0 +1,110 @@
+/* booking.css — modulo "richiesta di tavolo" (dentro la sezione Pöydät). Solo regole mobile. */
+.booking{margin-top:28px;padding:24px 20px;background:rgba(24,21,18,.86);border:1px solid var(--rule);
+  border-radius:var(--r-lg)}
+.bk-title{font-family:"Oswald",sans-serif;font-weight:700;font-size:28px;line-height:1.05;
+  text-transform:uppercase;margin:0 0 8px}
+.bk-lead{margin:0 0 14px;color:var(--ink-soft);max-width:56ch}
+.bk-wish{margin:0 0 16px;padding:10px 14px;border:1px solid rgba(224,160,48,.32);border-radius:var(--r-sm);
+  color:var(--amber);font-size:15px}
+.bk-grid{display:grid;gap:14px}
+.bk-field{margin:0 0 14px}
+.bk-field label,.bk-consent label{display:block;margin:0 0 6px;font-size:14px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.bk-field small{font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink-faint)}
+/* 16 px o piu': sotto questa soglia Safari su iPhone ingrandisce la pagina al tocco */
+.booking input[type=text],.booking input[type=email],.booking input[type=tel],.booking input[type=date],
+.booking select,.booking textarea{width:100%;min-height:48px;padding:10px 16px;font:inherit;font-size:16px;
+  color:var(--ink);background:rgba(15,13,11,.7);border:1px solid var(--rule);border-radius:var(--r-sm);
+  -webkit-appearance:none;appearance:none;transition:border-color var(--t-fast),background var(--t-fast)}
+.booking textarea{resize:vertical;min-height:88px}
+.booking select{background-image:linear-gradient(45deg,transparent 50%,var(--ink-soft) 50%),
+  linear-gradient(135deg,var(--ink-soft) 50%,transparent 50%);background-position:calc(100% - 22px) 55%,calc(100% - 16px) 55%;
+  background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+.booking select:disabled{opacity:.55}
+.booking input:focus,.booking select:focus,.booking textarea:focus{border-color:var(--amber);outline:none;
+  box-shadow:0 0 0 3px rgba(224,160,48,.25)}
+.booking [aria-invalid="true"]{border-color:var(--closed)}
+.bk-err{margin:6px 2px 0;font-size:14px;color:var(--closed)}
+.bk-hint{margin:-4px 2px 16px;font-size:14px;color:var(--ink-faint)}
+.bk-trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.bk-consent{display:grid;grid-template-columns:24px 1fr;gap:0 12px;align-items:start;margin:4px 0 18px}
+.bk-consent input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--amber)}
+.bk-consent label{margin:0;font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.bk-consent .bk-err{grid-column:2}
+.bk-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.bk-actions .btn{border:0;font-family:inherit;cursor:pointer}
+.bk-actions .btn:disabled{opacity:.6;cursor:progress}
+.bk-small{margin:0;font-size:14px;color:var(--ink-faint)}
+.bk-status{margin:14px 0 0;color:var(--ink-soft)}
+.bk-status.bad{color:var(--closed)}
+.bk-done:focus{outline:none}
+.bk-sum{list-style:none;margin:14px 0 18px;padding:0;display:grid;gap:6px}
+.bk-sum b{display:inline-block;min-width:7.5em;font-weight:700;color:var(--ink-soft)}
+.bk-demo{margin:0 0 16px;padding:10px 14px;border:1px dashed var(--ink-faint);border-radius:var(--r-sm);
+  font-size:14.5px;color:var(--ink-soft)}
+@media (prefers-reduced-motion:reduce){.booking input,.booking select,.booking textarea{transition:none}}
+
+/* ---- campo data (pulsante) e calendario a comparsa ---- */
+.bk-datebtn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:10px 16px;
+  font:inherit;font-size:16px;text-align:left;color:var(--ink);background:rgba(15,13,11,.7);border:1px solid var(--rule);
+  border-radius:var(--r-sm);cursor:pointer;transition:border-color var(--t-fast),box-shadow var(--t-fast)}
+.bk-datebtn.empty{color:var(--ink-soft)}
+.bk-datebtn svg{flex:none;color:var(--amber)}
+.bk-datebtn:focus-visible,.bk-datebtn[aria-expanded="true"]{border-color:var(--amber);outline:none;box-shadow:0 0 0 3px rgba(224,160,48,.25)}
+.bk-datebtn[aria-invalid="true"]{border-color:var(--closed)}
+.bk-cal{margin:0 0 16px;padding:16px;background:#141110;border:1px solid rgba(224,160,48,.32);border-radius:var(--r-md);max-width:420px}
+.cal-head{display:flex;align-items:center;gap:6px;margin:0 0 10px}
+.cal-title{flex:1;margin:0;text-align:center;font-family:"Oswald",sans-serif;font-weight:500;font-size:18px;letter-spacing:.06em;text-transform:uppercase}
+.cal-nav,.cal-x{width:44px;height:44px;flex:none;font:inherit;font-size:24px;line-height:1;color:var(--ink);background:none;
+  border:1px solid var(--rule);border-radius:var(--r-pill);cursor:pointer;transition:border-color var(--t-fast),opacity var(--t-fast)}
+.cal-nav:disabled{opacity:.3;cursor:default}
+.cal-nav:not(:disabled):hover,.cal-x:hover{border-color:var(--amber)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-wd{padding:4px 0;text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.d{position:relative;width:100%;height:44px;min-width:0;padding:0;font:inherit;font-size:16px;font-weight:700;color:var(--ink);
+  background:none;border:1px solid transparent;border-radius:var(--r-pill);cursor:pointer;
+  transition:background var(--t-fast),border-color var(--t-fast),transform var(--t-fast) var(--ease)}
+.d:not(:disabled):hover{background:rgba(224,160,48,.16)}
+.d:not(:disabled):active{transform:scale(.92)}
+.d:focus-visible{outline:2px solid var(--amber);outline-offset:1px}
+.d.today{border-color:var(--ink-faint)}
+.d.sel{background:var(--amber);color:#1a1205;border-color:var(--amber)}
+.d-few::after{content:"";position:absolute;left:50%;bottom:5px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--amber)}
+.d.sel::after{background:#1a1205}
+.d-out,.d-closed,.d-full{cursor:default;font-weight:400}
+.d-out{color:var(--ink-faint);opacity:.35}
+.d-closed{color:var(--ink-faint);opacity:.6;text-decoration:line-through}
+.d-full{color:var(--closed);opacity:.75;background:repeating-linear-gradient(135deg,transparent 0 5px,rgba(217,105,79,.18) 5px 6px)}
+.cal-leg{display:flex;flex-wrap:wrap;gap:6px 16px;margin:12px 0 0;padding:0;list-style:none;font-size:13px;color:var(--ink-soft)}
+.cal-leg li{display:flex;align-items:center;gap:6px}
+.k{display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid var(--ink-faint)}
+.k-few{background:radial-gradient(circle,var(--amber) 0 30%,transparent 35%)}
+.k-full{border-color:var(--closed);background:repeating-linear-gradient(135deg,transparent 0 2px,rgba(217,105,79,.5) 2px 3px)}
+.k-closed{opacity:.5;border-style:dashed}
+.cal-note{margin:10px 0 0;font-size:13px;color:var(--ink-faint)}
+@media (prefers-reduced-motion:reduce){.d,.cal-nav,.cal-x,.bk-datebtn{transition:none}}
+
+/* il calendario si apre sotto il campo "Päivä" e scorre sopra i campi che seguono */
+.bk-datefield{position:relative}
+.bk-datefield .bk-cal{position:absolute;top:calc(100% - 2px);left:0;right:0;max-width:none;margin:0;z-index:30;
+  box-shadow:0 18px 40px rgba(0,0,0,.55)}
+/* sul telefono l'intestazione del mese non deve andare a capo */
+@media (max-width:420px){
+  .cal-nav,.cal-x{width:38px;height:38px;font-size:20px}
+  .cal-title{font-size:15px;letter-spacing:.03em}
+}
+
+/* sul telefono il calendario esce di poco dal campo data (fino a ~16 px dai bordi dello schermo), cosi' le celle restano larghe */
+@media (max-width:430px){
+  .bk-datefield .bk-cal{left:-22px;right:-22px;padding:12px}
+  .cal-grid{gap:3px}
+}
+
+/* pranzo o cena: due pulsanti che sbloccano la fascia di orari (booking.js). Stesso stile dei pulsanti del numero di ospiti. */
+.bk-lbl{display:block;margin:0 0 6px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.bk-seg{display:flex;flex-wrap:wrap;gap:10px}
+.bk-seg button{font:inherit;font-size:15px;font-weight:700;min-height:44px;padding:0 18px;background:none;color:var(--ink-soft);
+  border:1px solid var(--ink-faint);border-radius:var(--r-pill);cursor:pointer;
+  transition:background var(--t-fast),color var(--t-fast),border-color var(--t-fast)}
+.bk-seg button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#1a1205}
+.bk-seg button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}

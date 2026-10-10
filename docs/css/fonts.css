@@ -1,0 +1,14 @@
+/* Font ospitati nel sito (nessuna richiesta a Google).
+   Oswald e Karla: licenza SIL Open Font License 1.1. Sottoinsieme "latin"
+   (copre a, o, ae del finlandese). I file arrivano dai pacchetti npm
+   @fontsource/oswald e @fontsource/karla. */
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500;font-display:swap;
+  src:url("../fonts/oswald-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:700;font-display:swap;
+  src:url("../fonts/oswald-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Karla";font-style:normal;font-weight:400;font-display:swap;
+  src:url("../fonts/karla-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Karla";font-style:normal;font-weight:500;font-display:swap;
+  src:url("../fonts/karla-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"Karla";font-style:normal;font-weight:700;font-display:swap;
+  src:url("../fonts/karla-latin-700-normal.woff2") format("woff2")}

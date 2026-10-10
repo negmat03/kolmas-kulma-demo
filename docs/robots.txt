@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://negmat03.github.io/kolmas-kulma-demo/sitemap.xml

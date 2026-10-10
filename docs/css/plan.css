@@ -1,0 +1,46 @@
+/* plan.css — sezione "Pöydät": pianta del locale e scelta del tavolo.
+   Il disegno e' un SVG generato da site.json (campo "tavoli"). */
+.plan-help{margin:18px 0 0;max-width:52ch;color:var(--ink-soft)}
+.plan-disclaimer{margin:12px 0 0;max-width:60ch;padding:10px 14px;border:1px dashed var(--ink-faint);
+  border-radius:var(--r-sm);font-size:14.5px;color:var(--ink-soft)}
+.party{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 22px}
+.party button{font:inherit;font-size:15px;font-weight:700;min-width:56px;min-height:44px;padding:0 16px;
+  background:none;color:var(--ink-soft);border:1px solid var(--ink-faint);border-radius:999px;cursor:pointer}
+.party button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#1a1205}
+
+.planwrap{display:grid;gap:20px}
+.plan{display:block;width:100%;height:auto;background:var(--paper);border:1px solid var(--rule);border-radius:var(--r-lg)}
+.plan .room{fill:none;stroke:var(--rule);stroke-width:.6}
+.plan text{font-family:"Oswald",sans-serif;font-size:2.4px;letter-spacing:.35px;fill:var(--ink-faint)}
+.plan .bar rect,.plan .kitchen rect{fill:#241f19;stroke:var(--ink-faint);stroke-width:.35}
+.plan .bar circle{fill:var(--ink-faint)}
+.plan .door path{stroke:var(--amber);stroke-width:1.2}
+.plan .tbl{cursor:pointer;outline:none;transition:opacity .2s}
+.plan .tbl .top{fill:#2a241d;stroke:var(--ink-faint);stroke-width:.4;transition:fill .15s,stroke .15s}
+.plan .tbl .chair{fill:var(--ink-faint)}
+.plan .tbl text.num{font-size:4.6px;letter-spacing:0;fill:var(--ink);pointer-events:none}
+.plan .tbl:hover .top,.plan .tbl:focus-visible .top{stroke:var(--amber)}
+.plan .tbl:focus-visible .top{stroke-width:.9}
+.plan .tbl.fit .top{stroke:var(--amber);stroke-width:.6}
+.plan .tbl.best .top{fill:#3a2e1a}
+.plan .tbl.dim{opacity:.28}
+.plan .tbl.sel .top{fill:var(--amber);stroke:var(--amber)}
+.plan .tbl.sel text.num{fill:#1a1205}
+@media (prefers-reduced-motion:reduce){.plan .tbl,.plan .tbl .top{transition:none}}
+
+.plan-info{min-height:132px;padding:18px 20px;background:var(--paper);border:1px solid rgba(224,160,48,.32);
+  border-radius:var(--r-md)}
+.plan-info p{margin:0}
+.pi-empty{color:var(--ink-faint)}
+.pi-title{font-family:"Oswald",sans-serif;font-weight:500;font-size:24px;letter-spacing:.05em;text-transform:uppercase}
+.pi-meta{margin:4px 0 12px !important;color:var(--ink-soft)}
+.pi-warn{margin:0 0 12px !important;color:var(--closed)}
+.pi-note{margin:10px 0 0 !important;font-size:14px;color:var(--ink-faint)}
+
+/* scelta del tavolo: il tavolo pulsa una volta e la scheda entra (classi messe da plan.js). Solo transform e opacity. */
+.plan .tbl{transform-box:fill-box;transform-origin:50% 50%}
+.plan .tbl.pulse{animation:tblpulse .6s var(--ease) 1}
+.plan-info.enter{animation:cardin var(--t-med) var(--ease) both}
+@keyframes tblpulse{0%{transform:scale(1)}35%{transform:scale(1.14)}100%{transform:scale(1)}}
+@keyframes cardin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.plan .tbl.pulse,.plan-info.enter{animation:none}}

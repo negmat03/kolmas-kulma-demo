@@ -1,0 +1,70 @@
+/* nav.css — menu laterale, freccia "scorri", "torna su".
+   Mobile: pannello a scomparsa da destra. Desktop: vedi desktop.css.
+   Stile volutamente minimo: il design si rifinisce dopo. */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+html.nav-open{overflow:hidden}
+
+/* bottone nella testata (tre linee) */
+.menu-btn{width:44px;height:44px;border:1px solid var(--rule);border-radius:999px;background:none;
+  color:var(--ink);cursor:pointer;position:relative;flex:none;
+  transition:transform var(--t-fast) var(--ease),border-color var(--t-fast)}
+.menu-btn:active{transform:scale(.92)}
+.nav-open .menu-btn{border-color:var(--amber)}
+.menu-btn i,.menu-btn i::before,.menu-btn i::after{position:absolute;left:12px;width:18px;height:2px;
+  background:currentColor;border-radius:2px;transition:transform var(--t-fast) var(--ease),opacity var(--t-fast)}
+.menu-btn i{top:20px}
+.menu-btn i::before,.menu-btn i::after{content:"";left:0}
+.menu-btn i::before{top:-6px}
+.menu-btn i::after{top:6px}
+.nav-open .menu-btn i{background:transparent}
+.nav-open .menu-btn i::before{transform:translateY(6px) rotate(45deg)}
+.nav-open .menu-btn i::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* pannello: scorre da destra, sfondo che sfuma, voci che entrano una dopo l'altra */
+.backdrop{position:fixed;inset:0;z-index:35;background:rgba(0,0,0,.6);opacity:0;
+  transition:opacity var(--t-med) var(--ease)}
+.backdrop.on{opacity:1}
+.backdrop[hidden]{display:none}
+.sidenav{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(78vw,320px);
+  padding:calc(88px + env(safe-area-inset-top)) 28px 28px;background:var(--paper);
+  border-left:1px solid var(--rule);border-radius:var(--r-lg) 0 0 var(--r-lg);
+  transform:translateX(100%);visibility:hidden;
+  transition:transform .4s var(--ease),visibility 0s .4s}
+.nav-open .sidenav{transform:none;visibility:visible;transition:transform .4s var(--ease)}
+.sidenav ul{list-style:none;margin:0;padding:0;position:relative}
+.sidenav li{opacity:0;transform:translateX(18px);
+  transition:opacity var(--t-fast) var(--ease),transform var(--t-fast) var(--ease)}
+.nav-open .sidenav li{opacity:1;transform:none;
+  transition:opacity var(--t-med) var(--ease) calc(.12s + var(--i,0) * 45ms),
+             transform .4s var(--ease) calc(.12s + var(--i,0) * 45ms)}
+.sidenav a{display:flex;align-items:center;min-height:56px;padding-left:18px;font-family:"Oswald",sans-serif;
+  font-weight:500;font-size:24px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule);
+  transition:color var(--t-med) var(--ease)}
+.sidenav a[aria-current="true"]{color:var(--amber)}
+/* indicatore: una barretta che scivola sulla voce attiva (posizionata da nav.js) */
+.sidenav li.nav-ind{position:absolute;left:0;top:0;width:3px;height:0;margin:0;border-radius:3px;
+  background:var(--amber);opacity:1;transform:translateY(0);pointer-events:none}
+.sidenav li.nav-ind.ready{transition:transform var(--t-med) var(--ease),height var(--t-med) var(--ease)}
+@media (prefers-reduced-motion:reduce){
+  .sidenav,.sidenav li,.backdrop,.sidenav li.nav-ind.ready,.menu-btn{transition:none !important}
+  .sidenav li{opacity:1;transform:none}
+}
+
+.nav-close{position:absolute;top:calc(20px + env(safe-area-inset-top));right:20px;width:44px;height:44px;
+  border:1px solid var(--rule);border-radius:999px;background:none;color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center}
+
+/* freccia "scorri" in fondo alla hero */
+.scrollcue{display:flex;flex-direction:column;align-items:center;gap:4px;margin:34px auto 0;
+  width:max-content;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-faint);text-decoration:none}
+.scrollcue svg{animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{50%{transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){.scrollcue svg{animation:none}}
+
+/* torna su, nel footer */
+.totop{margin-left:auto;color:var(--ink-soft)}
+footer{scroll-margin-top:76px}

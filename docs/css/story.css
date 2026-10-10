@@ -1,0 +1,7 @@
+/* story.css — sezione "Tarina": storia del locale. Solo regole mobile. */
+.storygrid{display:grid;gap:34px;margin-top:30px}
+.storytext p{margin:0 0 16px;font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:46ch}
+.facts3{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.facts3 li{padding:16px 12px;border:1px solid rgba(224,160,48,.32);border-radius:var(--r-md);background:rgba(24,21,18,.6)}
+.facts3 b{display:block;font-family:"Oswald",sans-serif;font-weight:700;font-size:34px;line-height:1;color:var(--ink)}
+.facts3 span{display:block;margin-top:6px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)}
